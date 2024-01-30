@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/widgets/big_text.dart';
+import 'package:learn_flutter/widgets/small_text.dart';
 
 import '../utils/colors.dart';
 
@@ -26,11 +27,18 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   children: [
                     Column(
                       children: [
-                        BigText(text: '我是餐厅标题'),
                         BigText(
-                          text: '我是区域',
-                          color: AppColors.textColor,
-                          size: 12,
+                          text: '我是餐厅标题',
+                          color: AppColors.mainColor,
+                        ),
+                        Row(
+                          children: [
+                            SmallText(
+                              text: '我是区域',
+                              color: AppColors.textColor,
+                            ),
+                            Icon(Icons.arrow_drop_down_rounded)
+                          ],
                         )
                       ],
                     ),

@@ -4,6 +4,7 @@ import 'package:learn_flutter/widgets/big_text.dart';
 import 'package:learn_flutter/widgets/small_text.dart';
 
 import '../utils/colors.dart';
+import 'food_page_body.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({super.key});
@@ -57,6 +58,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
                     )
                   ],
                 ))),
+        FoodPageDody()
       ],
     ));
   }

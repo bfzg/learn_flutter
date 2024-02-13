@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:learn_flutter/utils/colors.dart';
+import 'package:learn_flutter/widgets/big_text.dart';
 
 class FoodPageDody extends StatefulWidget {
   const FoodPageDody({super.key});
@@ -9,28 +11,69 @@ class FoodPageDody extends StatefulWidget {
 }
 
 class _FoodPageDodyState extends State<FoodPageDody> {
+  PageController pageController = PageController(viewportFraction: 0.85);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 330,
-      child: PageView.builder(
-          itemCount: 5,
-          itemBuilder: (context, position) {
-            return _buildPageItem(position);
-          }),
+    return Stack(
+      children: [
+        Container(
+          color: Colors.redAccent,
+          height: 330,
+          margin: EdgeInsets.only(left: 5, right: 5),
+          child: PageView.builder(
+              controller: pageController,
+              itemCount: 5,
+              itemBuilder: (context, position) {
+                return _buildPageItem(position);
+              }),
+        )
+      ],
     );
   }
 
   Widget _buildPageItem(int index) {
-    return Container(
-      margin: EdgeInsets.only(left: 5, right: 5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          color: index.isEven ? AppColors.mainColor : AppColors.conColor,
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage("assets/image/carousel.jpg"),
-          )),
+    return Stack(
+      children: [
+        Container(
+          height: 220,
+          // margin: EdgeInsets.only(left: 5, right: 5),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: index.isEven ? AppColors.mainColor : AppColors.conColor,
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage("assets/image/carousel.jpg"),
+              )),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: 140,
+            margin: EdgeInsets.only(left: 30,right: 30,bottom: 15),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color:Colors.white,
+            ),
+            child: Container(
+              padding: EdgeInsets.only(top: 10,left: 15,right: 15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BigText(text: "中国菜"),
+                  SizedBox(height: 10,),
+                  Row(
+                    children: [
+                      Wrap(
+                        children: List.generate(5, (index) => Icon(Icons.star,color: AppColors.mainColor,size: 15,)),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          )
+        )
+      ],
     );
   }
 }

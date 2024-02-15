@@ -14,6 +14,20 @@ class FoodPageDody extends StatefulWidget {
 
 class _FoodPageDodyState extends State<FoodPageDody> {
   PageController pageController = PageController(viewportFraction: 0.85);
+
+  var currPageValue = 0.0;
+
+  @override
+  void initState(){
+    super.initState();
+    pageController.addListener(() {
+      setState(() {
+        currPageValue = pageController.page!;
+        print("currPageValue: " + currPageValue.toString());
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(

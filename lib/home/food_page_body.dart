@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/utils/colors.dart';
 import 'package:learn_flutter/widgets/big_text.dart';
+import 'package:learn_flutter/widgets/icon_and_text.dart';
+import 'package:learn_flutter/widgets/small_text.dart';
 
 class FoodPageDody extends StatefulWidget {
   const FoodPageDody({super.key});
@@ -17,7 +19,6 @@ class _FoodPageDodyState extends State<FoodPageDody> {
     return Stack(
       children: [
         Container(
-          color: Colors.redAccent,
           height: 330,
           margin: EdgeInsets.only(left: 5, right: 5),
           child: PageView.builder(
@@ -36,7 +37,7 @@ class _FoodPageDodyState extends State<FoodPageDody> {
       children: [
         Container(
           height: 220,
-          // margin: EdgeInsets.only(left: 5, right: 5),
+          margin: EdgeInsets.only(left: 10, right: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               color: index.isEven ? AppColors.mainColor : AppColors.conColor,
@@ -48,24 +49,39 @@ class _FoodPageDodyState extends State<FoodPageDody> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: 140,
-            margin: EdgeInsets.only(left: 30,right: 30,bottom: 15),
+            height: 130,
+            margin: EdgeInsets.only(left: 30,right: 30,bottom: 40),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               color:Colors.white,
             ),
             child: Container(
-              padding: EdgeInsets.only(top: 10,left: 15,right: 15),
+              padding: EdgeInsets.only(top: 15,left: 15,right: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BigText(text: "中国菜"),
+                  BigText(text: "Chinese Side"),
                   SizedBox(height: 10,),
                   Row(
                     children: [
                       Wrap(
                         children: List.generate(5, (index) => Icon(Icons.star,color: AppColors.mainColor,size: 15,)),
-                      )
+                      ),
+                      SizedBox(width:10,),
+                      SmallText(text: '4.5'),
+                      SizedBox(width: 10,),
+                      SmallText(text: "1287"),
+                      SizedBox(width: 10,),
+                      SmallText(text: "comments"),
+                    ],
+                  ),
+                  SizedBox(height: 10,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconAndText(icon: Icons.circle_sharp, text: "Normal", iconColor: AppColors.iconColor1,),
+                      IconAndText(icon: Icons.location_on, text: "1.7KM", iconColor: AppColors.mainColor,),
+                      IconAndText(icon: Icons.access_time_rounded, text: "32min", iconColor: AppColors.iconColor2,),
                     ],
                   )
                 ],

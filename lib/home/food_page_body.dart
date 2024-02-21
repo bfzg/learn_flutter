@@ -15,17 +15,22 @@ class FoodPageDody extends StatefulWidget {
 class _FoodPageDodyState extends State<FoodPageDody> {
   PageController pageController = PageController(viewportFraction: 0.85);
 
-  var currPageValue = 0.0;
+  var _currPageValue = 0.0;
+  double _scaledFactor = 0.8;
 
   @override
   void initState(){
     super.initState();
     pageController.addListener(() {
       setState(() {
-        currPageValue = pageController.page!;
-        print("currPageValue: " + currPageValue.toString());
+        _currPageValue = pageController.page!;
       });
     });
+  }
+
+  @override
+  void dispose(){
+    pageController.dispose();
   }
 
   @override
@@ -47,6 +52,13 @@ class _FoodPageDodyState extends State<FoodPageDody> {
   }
 
   Widget _buildPageItem(int index) {
+    Matrix4 matrix = new Matrix4.identity();  //Matrix4 是提供二维三维变换的 identity 返回一个单位矩阵，即没有任何变换的矩阵。
+    print("identity >>>>>> "+ matrix.toString());
+    if(index == _currPageValue.floor()){  //floor() 用于浮点数向下舍入到最接近的整数
+      var currScale = 1 - (_currPageValue - 1)*(1-_scaledFactor);
+    }
+
+
     return Stack(
       children: [
         Container(
